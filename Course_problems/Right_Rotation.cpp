@@ -65,6 +65,23 @@ class Vector {
             arr[idx] = value;
             ++size;
         }
+        void right_rotate() {
+            if(size == capacity)
+            expand_capacity();
+            /*
+            To avoid the over capacity move :
+            int last_element = arr[size-1];
+            for (int i = size - 2 ; i >= 0; i--) {
+                arr[i+1] = arr[i];
+            }
+            arr[0] = last_element;
+            */
+            for(int i = size -1; i >=0; i--){
+                arr[i+1] = arr[i];
+            }
+            arr[0] = arr[size];
+            arr[size] = '\0';
+        }
 };
 int main() {
    Vector vec(5);
@@ -73,6 +90,8 @@ int main() {
    vec.print();
    vec.insert(23,4);
    vec.print();
-   cout << vec.find(15) << endl;
+   vec.right_rotate();
+   vec.print();
+   cout << vec.find(23 ) << endl;
     return 0;
 }

@@ -1,4 +1,4 @@
-#include<iostream>
+ #include<iostream>
 #include<cassert>
 using namespace std;
 class Vector {
@@ -65,6 +65,19 @@ class Vector {
             arr[idx] = value;
             ++size;
         }
+        void left_rotate() {
+            if(size == capacity)
+            expand_capacity();
+            /* same third variable introduction as in right rotate
+            for capacity expansion avoidance
+            */
+
+            arr[size] = arr[0];
+            for(int i = 1; i <= size; i++){
+                arr[i-1] = arr[i];
+            }
+            arr[size] = '\0';
+        }
 };
 int main() {
    Vector vec(5);
@@ -72,6 +85,8 @@ int main() {
    vec.push_back(15);
    vec.print();
    vec.insert(23,4);
+   vec.print();
+   vec.left_rotate();
    vec.print();
    cout << vec.find(15) << endl;
     return 0;

@@ -65,6 +65,16 @@ class Vector {
             arr[idx] = value;
             ++size;
         }
+        int find_transposition(int value) {
+            int i = 0;
+            for(; i < size; i++){
+                if(arr[i]==value)
+                break;
+            }
+            arr[i] = arr[i-1];
+            arr[i-1] = value;
+            return i-1;
+        }
 };
 int main() {
    Vector vec(5);
@@ -73,6 +83,8 @@ int main() {
    vec.print();
    vec.insert(23,4);
    vec.print();
-   cout << vec.find(15) << endl;
+   //cout << vec.find(15) << endl;
+   cout << vec.find_transposition(15) << endl;
+   vec.print();
     return 0;
-}
+}   

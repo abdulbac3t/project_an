@@ -65,14 +65,25 @@ class Vector {
             arr[idx] = value;
             ++size;
         }
+        int pop(int idx) {
+            assert( 0<=idx && idx < size);
+            int temp = arr[idx];
+            for(int i = idx; i < size - 1; i++) {
+                arr[i] = arr[i+1];
+            }
+            size--;
+            return temp;
+        }
 };
 int main() {
    Vector vec(5);
    vec.set(2,5);
    vec.push_back(15);
-   vec.print();
+   //vec.print();
    vec.insert(23,4);
    vec.print();
-   cout << vec.find(15) << endl;
+   //cout << vec.find(15) << endl;
+   cout << vec.pop(3) << endl;
+   vec.print();
     return 0;
 }
